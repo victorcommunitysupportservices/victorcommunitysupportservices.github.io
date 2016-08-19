@@ -75,8 +75,8 @@ if(!google_url || !google_logo_url){
 else{
 o += '<a href="'+google_url+'"><img src="'+google_logo_url+'"></a>&nbsp;&nbsp;';
 }
-o += '<a style="border:none" href="http://whiteconstruction.com/"><img src="http://whiteconstruction.com/wci/wci/white-logo.png" /></a>';
-o += '<a style="border:none" href="http://www.iea.net/"><img src="http://whiteconstruction.com/wci/wci/white-pf.png" /></a>';
+o += '<a style="border:none" href="http://www.victor.org/victor-community-support-services"><img src="https://victorcommunitysupportservices.github.io/victor-logo.png" /></a>';
+//o += '<a style="border:none" href="http://www.iea.net/"><img src="http://whiteconstruction.com/wci/wci/white-pf.png" /></a>';
 o += '</td></tr>';
 o += '</table>';
 
