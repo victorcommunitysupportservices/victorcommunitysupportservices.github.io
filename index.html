@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Email Signature Generator</title>
+
+<script type="text/javascript" src="jquery-latest.js"></script>
+<script src="jquery.validate.js" type="text/javascript"></script>
+<script src="jquery.clearfield.js" type="text/javascript"></script>
+
+<script src="html_output.js" type="text/javascript"></script>
+<script src="text_output.js" type="text/javascript"></script>
+
+<script type="text/javascript" language="javascript">
+// all global vars
+var o = '';
+var first_name = '';
+var last_name = '';
+var title = '';
+var full_name = '';
+var name_title = '';
+var direct_phone_a = '';
+var direct_phone_b = '';
+var direct_phone_c = '';
+var direct_phone = '';
+var cell_a = '';
+var cell_b = '';
+var cell_c = '';
+var cell = '';
+var main_phone_a = '';
+var main_phone_b = '';
+var main_phone_c = '';
+var main_phone = '';
+var toll_free_a = '';
+var toll_free_b = '';
+var toll_free_c = '';
+var toll_free = '';
+var fax_a = '';
+var fax_b = '';
+var fax_c = '';
+var fax = '';
+//var extention = '';
+var company_name = '';
+var company_address = '';
+var company_city = '';
+var company_state = '';
+var company_zip = '';
+var company_url = '';
+var logo_url = '';
+
+var facebook_logo_url = '';
+var twitter_logo_url = '';
+var youtube_logo_url = '';
+var linkedin_logo_url = '';
+var google_logo_url = '';
+
+
+var facebook_url = '';
+var twitter_url = '';
+var youtube_url = '';
+var linkedin_url = '';
+
+// jquery validator
+$.validator.setDefaults({
+	submitHandler: function() { 
+		checkRequired();
+	}
+});
+
+$(document).ready(function() {
+	// validate signup form on keyup and submit
+	$("#generator_form").validate({
+		rules: {
+			first_name: {required: true, minlength: 2},
+			last_name: {required: true, minlength: 2},
+			title: {required: true, minlength: 2},
+			company_name: {required: true, minlength: 2}
+		},
+		messages: {
+			firstname: {
+				required: "Please enter a username",
+				minlength: "Your username must consist of at least 2 characters"
+			},
+			lastname: {
+				required: "Please provide your last name",
+				minlength: "Your Last Name must consist of at least 2 characters"
+			},
+			title: {
+				required: "Please provide your title",
+				minlength: "Your title must be at least 2 characters"
+			},
+			company_name: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			}
+			
+		}
+	});
+	
+	// clear form
+	$('.clear_field').clearField();
+});
+
+
+
+
+
+function checkRequired() {
+	first_name = document.getElementById('first_name').value;
+	last_name = document.getElementById('last_name').value;
+	title = document.getElementById('title').value;
+	direct_phone_a = document.getElementById('direct_phone_a').value;
+	direct_phone_b = document.getElementById('direct_phone_b').value;
+	direct_phone_c = document.getElementById('direct_phone_c').value;
+	cell_a = document.getElementById('cell_a').value;
+	cell_b = document.getElementById('cell_b').value;
+	cell_c = document.getElementById('cell_c').value;
+	main_phone_a = document.getElementById('main_phone_a').value;
+	main_phone_b = document.getElementById('main_phone_b').value;
+	main_phone_c = document.getElementById('main_phone_c').value;
+	//extention = document.getElementById('extention').value;	
+	fax_a = document.getElementById('fax_a').value;
+	fax_b = document.getElementById('fax_b').value;
+	fax_c = document.getElementById('fax_c').value;
+	toll_free_a = document.getElementById('toll_free_a').value;
+	toll_free_b = document.getElementById('toll_free_b').value;
+	toll_free_c = document.getElementById('toll_free_c').value;
+	company_name = document.getElementById('company_name').value;
+	company_address = document.getElementById('company_address').value;
+	company_city = document.getElementById('company_city').value;
+	company_state = document.getElementById('company_state').value;
+	company_zip = document.getElementById('company_zip').value;
+	company_url = document.getElementById('company_url').value;
+	logo_url = document.getElementById('logo_url').value;
+	facebook_url = document.getElementById('facebook_url').value;
+	twitter_url = document.getElementById('twitter_url').value;
+	youtube_url = document.getElementById('youtube_url').value;
+	linkedin_url = document.getElementById('linkedin_url').value;
+	google_url = document.getElementById('google_url').value;
+	facebook_logo_url = document.getElementById('facebook_logo_url').value;
+	twitter_logo_url = document.getElementById('twitter_logo_url').value;
+	youtube_logo_url = document.getElementById('youtube_logo_url').value;
+	linkedin_logo_url = document.getElementById('linkedin_logo_url').value;
+	google_logo_url = document.getElementById('google_logo_url').value;
+	
+	if(!first_name || !last_name || !title || !company_name){
+		alert('fill out All fields');
+		return false;
+	}
+	else{
+        generateOutput();
+		return true;
+	}
+}
+alert = function() {};
+/*
+function clearOutput() {
+	document.getElementById("output").value = "";
+}
+
+window.onload = function() {
+    document.getElementById("generate").onclick = function() {
+		checkRequired();
+    };
+    document.getElementById("clear").onclick = function() {
+        clearOutput();
+    };
+};
+*/
+function imgPreview(){
+	logo_url = document.getElementById('logo_url').value;
+	document.getElementById('img_preview').src = logo_url;
+}
+
+</script>
+<style type="text/css">
+html,body{
+	margin:0 0 0 0;
+	border:0 0 0 0;
+	padding:0 0 0 0;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+}
+input{
+	width:250px;
+}
+.phones input{
+	width:45px;
+}
+.phones input#direct_phone_a,
+.phones input#cell_a,
+.phones input#main_phone_a,
+.phones input#fax_a,
+.phones input#toll_free_a,{
+	width:25px;
+}
+input#company_zip{
+	width:130px;
+}
+input#generate,
+input#clear{
+	width:100px;
+}
+textarea{
+	width:300px;
+}
+input,textarea{
+	border:solid 1px #999;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	color:#333;
+}
+h2{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+	color:rgb(2,114,162);
+	margin:0 0 0 0;
+	padding:0 0 0 0;
+}
+td{
+	vertical-align:top;
+	padding:10px;
+}
+label{
+	display:block;
+}
+label.error{
+	color:#F00;
+	font-size:12px;
+	font-weight:bold;
+}
+.clearFieldBlurred { color:#999; font-style: italic; }
+.clearFieldActive { color: #000; }
+img { border: none; }
+</style>
+</head>
+
+<body>
+<form class="cmxform" id="generator_form" method="get" action="">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+	<td><h2>STEP ONE</h2></td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+	<td>
+First Name:*<br />
+<input type="text" id="first_name" name="first_name" value="" rel="Your First Name" size="100" class="required clear_field" /><p />
+	</td>
+    <td>
+Last Name:*<br />
+<input type="text" id="last_name" name="last_name" value="" rel="Your Last Name" size="100" class="required clear_field" /><p />
+	</td>
+    <td>
+Title:*<br />
+<input type="text" id="title" name="title" value="" rel="Your Title" size="100" class="required clear_field" /><p />
+	</td>
+</tr>
+<tr>
+	<td class="phones">
+Direct Phone:<br />
+<input type="text" id="direct_phone_a" name="direct_phone_a" value="" rel="" maxlength="3" class="clear_field" />.<input type="text" id="direct_phone_b" name="direct_phone_b" value="" rel="" maxlength="3" class="clear_field" />.<input type="text" id="direct_phone_c" name="direct_phone_c" value="" rel="" maxlength="4" class="clear_field" /><br />
+	</td>
+    <td class="phones">
+Cell Phone:<br />
+<input type="text" id="cell_a" name="cell_a" value="" rel="" maxlength="3" class="clear_field" />.<input type="text" id="cell_b" name="cell_b" value="" rel="" maxlength="3" class="clear_field" />.<input type="text" id="cell_c" name="cell_c" value="" rel="" maxlength="4" class="clear_field" /><br />
+	</td>
+    <td class="phones">
+Main Phone:<br />
+<input type="text" id="main_phone_a" name="main_phone_a" value="" rel="" maxlength="3" class="clear_field" />.<input type="text" id="main_phone_b" name="main_phone_b" value="" rel="" maxlength="3" class="clear_field" />.<input type="text" id="main_phone_c" name="main_phone_c" value="" rel="" maxlength="4" class="clear_field" /> <br />
+	</td>
+</tr>
+<tr>
+	<td class="phones" style="display:none">
+Fax Line:<br />
+<input type="text" id="fax_a" name="fax_a" value="" rel="" maxlength="3" class="clear_field" />.<input type="text" id="fax_b" name="fax_b" value="" rel="" maxlength="3" class="clear_field" />.<input type="text" id="fax_c" name="fax_c" value="" rel="" maxlength="4" class="clear_field" /><br />
+	</td>
+    <td class="phones" style="display:none">
+Toll Free:<br />
+<input type="text" id="toll_free_a" name="cell_a" value="" rel="" maxlength="3" class="clear_field" />.<input type="text" id="toll_free_b" name="toll_free_b" value="" rel="" maxlength="3" class="clear_field" />.<input type="text" id="toll_free_c" name="toll_free_c" value="" rel="" maxlength="4" class="clear_field" /><br />
+	</td>
+    <td class="phones">&nbsp;
+    
+    </td>
+</tr>
+<tr>
+    <td>
+Email Address:<br />
+<input type="text" id="company_url" name="company_url" value="" rel="" size="100" class="clear_field" /><p />
+	</td>
+	<td style="display:none"><br />
+Logo URL:<br />
+<select id="logo_url" name="logo_url"  onmouseover="imgPreview()" class="clear_field">
+    <option value="white-logo.png">WCI</option>
+
+</select>	</td>
+    <td style="display:none"><img src="" id="img_preview" /></td>
+</tr>
+<tr>
+	<td style="display:none">
+Company name:*<br />
+<input type="text" id="company_name" name="company_name" value="White Construction, Inc." rel="Acme Company" size="100" class="required clear_field" /><p />
+    </td>
+    <td style="display:none">
+Company Address:<br />
+<input type="text" id="company_address" name="company_address" value="" rel="123 Main St. South" size="100" class="clear_field" /><p />
+	</td>
+    <td style="display:none">
+Company City:<br />
+<input type="text" id="company_city" name="company_city" value="" rel="Midway" size="100" class="clear_field" /><p />
+    </td>
+</tr>
+<tr>
+    <td style="display:none">
+Company State:<br />
+<select id="company_state" name="company_state">
+	<option value="" selected="selected">Select</option>
+	<option value="AL">AL</option>
+</select>
+	</td>
+    <td style="display:none">
+Company Zip:<br />
+<input type="text" id="company_zip" name="company_zip" value="" rel="5" size="100" class="clear_field" />
+    </td>
+    <td>&nbsp;
+    
+    </td>
+</tr>
+
+<tr>
+	<td style="display:none">
+Social Media Accounts:<br />
+Facebook URL / Logo URL:<br />
+URL: <input type="text" id="facebook_url" name="facebook_url" value="" rel="http://www.facebook.com/acme" size="100" class="clear_field" /><br />
+Logo: <input type="text" id="facebook_logo_url" name="facebook_logo_url" value="" rel="http://www.xxx.xxx/facebook.png" size="100" class="clear_field" /><p />
+Twitter URL / Logo URL:<br />
+URL: <input type="text" id="twitter_url" name="twitter_url" value="" rel="http://www.twitter.com/acme" size="100" class="clear_field" /><br />
+Logo: <input type="text" id="twitter_logo_url" name="twitter_logo_url" value="" rel="http://www.xxx.xxx/twitter.png" size="100" class="clear_field" /><p />
+
+    </td>
+    <td style="display:none">
+Youtube URL / Logo URL:<br />
+URL: <input type="text" id="youtube_url" name="youtube_url" value="" rel="http://www.youtube.com/acme" size="100" class="clear_field" /><br />
+Logo: <input type="text" id="youtube_logo_url" name="youtube_logo_url" value="" rel="http://www.xxx.xxx/youtube.png" size="100" class="clear_field" /><p />
+Linkedin URL / Logo URL:<br />
+URL: <input type="text" id="linkedin_url" name="linkedin_url" value="" rel="http://www.linkedin.com/acme" size="100" class="clear_field" /><br />
+Logo: <input type="text" id="linkedin_logo_url" name="linkedin_logo_url" value="" rel="http://www.xxx.xxx/linkedin.png" size="100" class="clear_field" /><p />    
+    </td>
+    <td style="display:none">
+Google+ URL / Logo URL:<br />
+URL: <input type="text" id="google_url" name="google_url" value="" rel="http://plus.google.com/acme" size="100" class="clear_field" /><br />
+Logo: <input type="text" id="google_logo_url" name="google_logo_url" value="" rel="http://www.xxx.xxx/google.png" size="100" class="clear_field" /><p />   
+    </td>
+</tr>    
+</table>
+
+
+<h2>STEP TWO</h2>
+<input class="submit" type="submit" value="Submit"/>
+<p />
+
+
+<textarea style="display:none" id="output" name="output" rows="10" cols="60" ></textarea>
+<p />
+
+<textarea style="display:none" id="smartdev" name="output" rows="10" cols="60"></textarea>
+</form>
+<p />
+<h2>COPY AND PASTE THIS INTO Outlook</h2>
+____________________________________________________<br />
+<div id="showOutput" style="width:400px;">
+your sig
+</div>
+<p />
+
+</body>
+</html>
